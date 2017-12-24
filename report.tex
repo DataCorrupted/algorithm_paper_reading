@@ -326,6 +326,7 @@ The query time is $O(log n/ log log n)$ using degree $log n$ ET-trees
 		\par We can cut down the amount of work in this algorithm by limiting the number of versions to $O(1)$, thus finding a replacement in a cutset problem requires an expected constant number of versions checked, instead of $O(\log n)$. Considering the fact that there are $O(\log n)$ levels, we can not find it even faster.
 \section{Discussion}
 	\subsection{Errors in the paper}
+	In the origen paper, section 4.1.1,4.1.2, they use a wrong way to insert a tree edge. If an edge connect two unconnected trees in $F_{top}$, they add it to all $F_l$ that $l > 0$, but we find actually we should connect a tree edge just like what we do in the Boruvka algorithm. If an edge connect two unconnected trees in $F_{top}$, we can get this edge's tier $k$, and then we add it to all $F_l$ where $l > k$. The note in section 4.1.1 is also wrong.
 	\subsection{Future}
 		\par Unlike other work trying to tackle dynamic graph, this work introduced a new method for adaptive graph sketching with a concern for fast update and query time. 
 		However, it's interesting to ask the fastest update and query time for other dynamic graph problems?
