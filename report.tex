@@ -60,7 +60,7 @@ It is worth to mention that this paper is the first solution who meets the lower
 \\
 \\
 $The$ $idea$: 
-It is relatively easy to deal with edge insertion, but it is more difficult to find a replacement edge when a tree edge is deleted, separating the origin tree into two subtrees. And this paper noticed that each replacement edge has exactly one endpoint in a subtree; all other edges have o or 2. And there are two ways to implement it. One is to add the name of each edges to the values stored at both its endpoints and do the operation XOR of the values of each nodes in a tree. The other is that for each edge, assign one endpoint -1 or 1 randomly and the other endpoint to the remaining value, and then sum all points to approximate the size of the cut. Even though the data structure seems simple, it is a challenge to preserves sufficient independence of randomness over a number of updates.
+It is relatively easy to deal with edge insertion, but it is more difficult to find a replacement edge when a tree edge is deleted, separating the origin tree into two subtrees. And this paper noticed that each replacement edge has exactly one endpoint in a subtree; all other edges have 0 or 2. And there are two ways to implement it. One is to add the name of each edges to the values stored at both its endpoints and do the operation XOR of the values of each nodes in a tree. The other is that for each edge, assign one endpoint -1 or 1 randomly and the other endpoint to the remaining value, and then sum all points to approximate the size of the cut. Even though the data structure seems simple, it is a challenge to preserves sufficient independence of randomness over a number of updates.
 \\
 \\
 $Main$ $results$
@@ -72,10 +72,10 @@ $\centerdot$  deletion: worst case $O(log^5n)$\\
 
 $\centerdot$  insertion: worst case $O(log\ n/log\ log n)$\\
 
-Though, it introduces the False Negative error which means if the answer to a query is "yes", it is totally correct, but when the answer to query is "no", it i correct wtih probability 1-1/$n^c$ for c any constant.
+Though, it introduces the False Negative error which means if the answer to a query is "yes", it is totally correct, but when the answer to query is "no", it is correct with probability 1-1/$n^c$ for c any constant.
 \\
 
-In Section 2, we introduce some related researches in more detail. In Section 3, we give the basic introduction to ET-tree. In Section 4, we explain how to find a replacement edge in cut set and prove its correctness. In the Section 5, we introduces the Boruvka tree and show why it can be used to this algorithm. In the Section 6, we explain how the algorithms works and why it is correct and efficient. The applications and discussion follow in Section 7 and 8.
+We will explain more related works in Section 2 and 3. In Section 2, we introduce the Boruvka tree and in Section 3, we give the basic introduction to ET-tree. In Section 4, we explain the data structure of this paper and show how to find a replacement edge in cut set and prove its correctness. In the Section 5, we explain the reason why it can be used to this algorithm. In the Section 6 and 7, we explain how the algorithms works and why it is correct and efficient. The applications and discussion follow in Section 8 and 9.
 
 \section{Borůvka's algorithm}
 \subsection{Original Algorithm}
@@ -208,7 +208,7 @@ Since equation (2) holds, we can increase the probability of correctness by repe
 \subsubsection*{Limitation}One core assumption that ensures a high accuracy rate of cutset data structure is that cutset queries and edge updates are not correlated with the random bits in the array. If it is not the case, the algorithm would fail. One simple example is that if the adversary is told the replacement edge, then he can cause the algorithm to fail by simply deleting the replacement edge after every update. After $O(log^2n)$ deletions, there will be no more replacement edges in this data structure, thus the algorithm fails.
 \subsubsection*{Proof improvement} In the paper our team has been focusing on, the authors used inequality scaling to prove that $Pr(E) \ge \frac{1}{9}$ and in a further paper they tighten the bound to $Pr(E) \ge \frac{1}{8}$ by using another method(See \cite{article}). The inequality scaling goes like this:
 $$Pr(E)={k \choose 1}(\frac{1}{2^{i'}})(1-\frac{1}{2^{i'}})^{k-1} > (1-\frac{1}{2^{i'}})^{2^{i'+1}}$$
-By plotting them on matlab, we find out that it is actually possible to tighten the lower bound higher:
+By plotting them on Matlab, we find out that it is actually possible to tighten the lower bound higher:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Pic/fig.jpg}
@@ -254,7 +254,7 @@ For each tier $l$ of the tree, we create
 an array $S^l = s_{i,j}^l(x)$ for $x$ a vertex of G, $0 \leq
 i \leq 2 lg n$ and $1 \leq j \leq c lg n$.
 \subsection{Initialization}
-We initialize by first creating, for each tier $l = 0, 1,2, \dots , top$, a cutset data structure where $F_l$ contains n trees consisting of the single vertices in G. we insert each edge in G using the procedure for handling edge insertions described below. And we mark $F_{top}$ as maximal to avoid unmatch.
+We initialze by first creating, for each tier $l = 0, 1,2, \dots , top$, a cutset data structure where $F_l$ contains n trees consisting of the single vertices in G. we insert each edge in G using the procedure for handling edge insertions described below. And we mark $F_{top}$ as maximal to avoid unmatch.
 \subsection{Handling insertions}
 To insert an edge {x, y}, we first insert it into all cutset data structure on each tier. If it connects two unconnected trees in $F_{top}$, add it to $F_l$ for all $l > k$ where k is the tier of this edge.
 \subsection{Handling queries}
@@ -294,12 +294,12 @@ Given a query {x, y}, if $T(x) = T(y)$ in $F_{top}$, return “yes”, else retu
 \end{algorithmic}
 
 \end{algorithm}
-\subsection{Details for reconnect}
+\subsection{Details for reconnection}
 We maintain a link-cut tree of $F_{top}$, the link-cut tree has the same vertexes with $F_{top}$, but the weight of edge is the edge's tier.
 Then we can find the maximum tier on the path between v and w in $log(n)$ time.\\
 ST-trees(link cut tree) provide a means of finding the maximum weight edge on a path between two nodes in a dynamic tree, in O(log n) time per tree edge link, cut, and the find operation.\\
 Any call to Delete will result in at most $2 · top$ calls to Reconnect.
-\section{Runtime Analize}
+\section{Runtime Analyze}
 The total cost of initialization without any edges is $O(n· top)$. The total cost of a deletion update is $O(log^5 n)$. The cost of an insertion update is $O(log^4 n)$. The cost of a query is $O(log n/ log log n)$.\\
 \subsection{Deletion}
 When we delete a tree edge, there may be at most $2 · top$ calls to Reconnect.Each Reconnect requires one search, and up to log $n$ links and cuts; the first costs $O(log n)$.Each link and cut of a tree storing $O(log^2 n)$ words per node costs $O(log^3 n)$ so the total cost of linking and cutting per Reconnect is $O(log^4 n)$\\
