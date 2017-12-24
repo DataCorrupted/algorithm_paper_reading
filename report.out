@@ -1,0 +1,31 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Borůvka's algorithm}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Original Algorithm}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Pseudo code}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Algorithm used in this work}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{ET-tree}{}% 6
+\BOOKMARK [1][-]{section.4}{Data Structure}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Construction of a cutset data structure}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Fast operation implementations on cutset data structure}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Some discussion about cutset data structure}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Fully Dynamic Connectivity}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Why Using Boruvka tree}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Boruvka tree property}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.3}{Invariants}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Algorithms}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Initialization}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{Handling insertions}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.3}{Handling queries}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.4}{Handling deletions}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.5}{Details for reconnection}{section.6}% 20
+\BOOKMARK [1][-]{section.7}{Runtime Analyze}{}% 21
+\BOOKMARK [2][-]{subsection.7.1}{Deletion}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.2}{Insertion}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.3}{Query}{section.7}% 24
+\BOOKMARK [1][-]{section.8}{Application}{}% 25
+\BOOKMARK [2][-]{subsection.8.1}{Emergency Planning}{section.8}% 26
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Even Faster}{subsection.8.1}% 27
+\BOOKMARK [1][-]{section.9}{Discussion}{}% 28
+\BOOKMARK [2][-]{subsection.9.1}{Errors in the paper}{section.9}% 29
+\BOOKMARK [2][-]{subsection.9.2}{Future}{section.9}% 30
+\BOOKMARK [1][-]{section*.10}{References}{}% 31
