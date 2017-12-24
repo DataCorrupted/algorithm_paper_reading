@@ -92,11 +92,11 @@ For each connected component in the forest, it stores a value representing the c
 \State initial forest F to be one-vertex tree.
 \While {F is not the maximum connected tree}:
 	\For{ each edge uv (containing node u and v)}:
-		\If (u, v belongs to different components):
-			\If (weight(uv) < u.W ):
+		\If {u, v belongs to different components}:
+			\If {weight(uv) less than u.W }:
 				\State set weight(uv) as the u.W
 			\EndIf
-			\If (weight(uv) < v.W ):
+			\If {weight(uv) less than v.W }:
 				\State set weight(uv) as the v.W
 			\EndIf
 		\EndIf
